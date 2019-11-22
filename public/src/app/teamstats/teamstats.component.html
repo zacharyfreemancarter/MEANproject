@@ -1,0 +1,59 @@
+<div style="min-width:70em" class="row">
+    <div class="float-left">
+        <h1 >Team Statistics</h1> 
+    </div>
+</div>
+
+<div style="min-width:70em" class="container-fluid row">
+    <div class="form-group col-4">
+        <h3>Choose Team</h3>
+        <select class="form-control" [(ngModel)]="selectedTeam" name="team" id="teamSelector">
+            <option *ngFor="let team of teams" value="{{team.Key}}">{{team.Key}}</option>
+        </select>
+        <button class="mt-2 col-12 float-right btn btn-primary" (click)="changeTeam()">Load Team</button>
+    </div>
+    <div class="col-4 form-group">
+            <h3>Select Stat</h3>
+            <select class="form-control"  [(ngModel)]="selectedStat" name="form-control" id="stat" id="statSelector">
+                <option value="FantasyPoints">Fantasy Points</option>
+                <option value="OffensiveTeamSnaps">Offensive Snaps</option>
+                <option value="Touchdowns">Touchdowns</option>
+                <option value="PassingCompletions">Completions</option>
+                <option value="PassingYards">Passing Yards</option>
+                <option value="PassingTouchdowns">Passing Touchdowns</option>
+                <option value="PassingInterceptions">Interceptions Thrown</option>
+                <option value="Receptions">Receptions</option>
+                <option value="ReceivingYards">Receiving Yards</option>
+                <option value="ReceivingTouchdowns">Receiving Touchdowns</option>
+                <option value="RushingAttempts">Rushing Attempts</option>
+                <option value="RushingYards">Rushing Yards</option>
+                <option value="RushingTouchdowns">Rushing Touchdowns</option>
+                <option value="DefensiveTeamSnaps">Defensive Snaps</option>
+                <option value="Sacks">Sacks</option>
+                <option value="Tackles">Tackles</option>
+                <option value="TacklesForLoss">Tackles For Loss</option>
+                <option value="FumblesForced">Fumbles Forced</option>
+                <option value="Interceptions">Interceptions</option>
+            </select>
+            <button (click)="changeStat()" class="mt-2 col-12 btn btn-primary float-right">Load Stat</button>
+    </div>
+    <div class="form-group col-4">
+        <h3>Player Stats</h3>
+        <select [(ngModel)]="this.selectedPlayer" class="form-control" name="player" id="playerSelector">
+            <ng-container  *ngFor="let player of playerStats">
+                <option value="{{player.PlayerID}}" *ngIf="player.Position === 'QB' || player.Position === 'RB' || player.Position === 'WR' || player.Position === 'TE' || player.Position === 'FB' ">{{player.ShortName}}</option>
+            </ng-container>
+        </select>
+        <button (click)="changePlayer()" class="mt-2 col-12 btn btn-primary float-right">Load Player</button>
+    </div>
+</div>
+<div class="row" style="min-width:70em">
+    <div class="col-6">
+        <canvas class=container-fluid #pieChart id="pieChart">{{ pieChart }}</canvas>
+    </div>
+    <div class="col-6">
+        <canvas class=container-fluid #radarChart id="radarChart">{{ radarChart }}</canvas>
+        <div class="row">
+        </div>
+    </div>
+</div>

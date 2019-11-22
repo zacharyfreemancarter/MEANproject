@@ -1,0 +1,42 @@
+    <div class="row">
+        <h1>League Statistics</h1>
+    </div>
+    <div class="row">
+      <app-seasonchart></app-seasonchart>
+    </div>
+    <div class="row">
+        <table style="min-width:70em;" id="seasonTable"  *ngIf="stats" class="table table-striped table-hover table-sm">
+            <thead>
+              <tr>
+                <th class="th-sm">Team Name</th>
+                <th class="th-sm">Points Scored</th>
+                <th class="th-sm">Points Allowed</th>
+                <th class="th-sm">Point Differential</th>
+                <th class="th-sm">Offensive Yards</th>
+                <th class="th-sm">Yards Allowed</th>
+                <th class="th-sm">Passing Yards</th>
+                <th class="th-sm">Rushing Yards</th>
+                <th class="th-sm">Penalty Yards</th>
+                <th class="th-sm">Turnover Differential</th>
+                <th class="th-sm">Sacks</th>
+                <th class="th-sm">Third Down Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let team of stats">
+                <td><button type="button" class="btn btn-teal btn-rounded btn-sm m-0">{{team.Team}}</button></td>
+                <td>{{team.Score}}</td>
+                <td>{{team.OpponentScore}}</td>
+                <td>{{team.Score-team.OpponentScore}}</td>
+                <td>{{team.OffensiveYards}}</td>
+                <td>{{team.OpponentOffensiveYards}}</td>
+                <td>{{team.PassingYards}}</td>
+                <td>{{team.RushingYards}}</td>
+                <td>{{team.PenaltyYards}}</td>
+                <td>{{team.TurnoverDifferential}}</td>
+                <td>{{team.Sacks}}</td>
+                <td>{{team.ThirdDownPercentage}}</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>

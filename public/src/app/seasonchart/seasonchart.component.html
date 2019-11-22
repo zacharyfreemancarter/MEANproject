@@ -1,0 +1,27 @@
+<div class="container-fluid row" >
+    <div class="form-group col-4">
+        <h3>Choose Statistic</h3>
+        <select class="form-control"  [(ngModel)]="selectedStat" name="stat" id="statSelector">
+            <option value="Score" default>Points Scored</option>
+            <option value="OpponentScore">Points Allowed</option>
+            <option value="OffensiveYards">Offensive Yards</option>
+            <option value="PassingYards">Passing Yards</option>
+            <option value="RushingYards">Rushing Yards</option>
+            <option value="PenaltyYards">Penalty Yards</option>
+            <option value="TurnoverDifferential">Turnover Differential</option>
+            <option value="Sacks">Sacks</option>
+            <option value="ThirdDownPercentage">Third Down Percentage</option>
+        </select>
+        <button class="mt-2 col-12 float-right btn btn-primary" (click)="reloadChart()">Load Stats</button>
+    </div>
+    <div class="col-4"></div>
+    <div class="form-group col-4">
+        <h3>Team Specific Stats</h3>
+        <select [(ngModel)]="selectedTeam" class="form-control" name="team" id="teamSelector">
+            <option  *ngFor="let team of teams; let index = i" value="{{team}}">{{team}}</option>
+        </select>
+        <button class="mt-2 col-12 btn btn-primary float-right" (click)="selectTeam()">Load Team Stats</button>
+    </div>
+
+</div>
+<canvas #seasonCanvas style="min-width:70em;" class=container-fluid #seasonChart id="seasonChart">{{ chart }}</canvas>
